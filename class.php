@@ -1,3 +1,5 @@
+<!-- to be modified -->
+
 <?php
 session_start();
 if (!isset($_SESSION['user'])) {
