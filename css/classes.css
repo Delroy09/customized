@@ -1,0 +1,362 @@
+/* notes */
+
+#notes-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+#notes-section h2 {
+  color: #333;
+}
+
+#note-input {
+  width: 70%;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#add-note-btn {
+  padding: 10px 20px;
+  background-color: #f1a335;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#add-note-btn:hover {
+  background-color: #e08a1f;
+}
+
+#notes-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.note-item {
+  background-color: #f1f1f1;
+  /* Light grey */
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  /* Light grey border */
+  border-radius: 5px;
+  /* Slightly rounded corners */
+  display: block;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.note-item:hover {
+  background-color: #e0e0e0;
+  /* Slightly darker grey */
+}
+
+.note-item span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.note-item button {
+  background-color: #f65954;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.note-item button:hover {
+  background-color: #c82333;
+}
+
+
+
+* {
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+button {
+  background-color: #da42f5;
+  border: none;
+  padding: 1rem 2rem;
+  color: white;
+  font-size: 1.2rem;
+  font-family: inherit;
+  border-radius: 0.4rem;
+  margin-right: 1rem;
+}
+
+button:hover,
+button:focus {
+  background-color: #aa0bc6;
+}
+
+button.clear-button {
+  background-color: #67f5dd;
+  color: black;
+}
+
+button.clear-button:hover,
+button.clear-button:focus {
+  background-color: #0fe7c2;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+table {
+  border: 3px solid black;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  text-align: center;
+}
+
+td {
+
+  font-size: 1.2rem;
+  border: 3px solid;
+  min-width: 10rem;
+  background-color: #f9d39f;
+}
+
+td[data-cell] {
+  height: 4rem;
+  position: relative;
+}
+
+thead th {
+  border-right: 3px solid;
+  text-align: center;
+}
+
+tbody th {
+  border-top: 3px solid;
+  text-align: center;
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+.wrapper {
+  max-width: 90rem;
+  padding: 1rem 2rem;
+  margin: 0 auto;
+}
+
+.lunch-row td {
+  background-color: #d69c51;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.2rem;
+  border: 3px solid black;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Display selected class */
+h2 {
+  text-align: center;
+  color: #f58f3c;
+}
+
+.radio-buttons {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.radio-buttons label {
+  margin: 0.5rem 0;
+}
+
+.save-btn {
+  background-color: #4b9bff;
+  color: white;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  padding: 1rem 2rem;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.save-btn:hover {
+  background-color: #367bb2;
+}
+
+button:focus {
+  outline: none;
+}
+
+@media print {
+
+  /* Hide the buttons during print */
+  .button-wrapper,
+  #print-btn,
+  #add-note-btn,
+  .note-item button,
+  #note-input {
+    display: none !important;
+  }
+
+  .note {
+    visibility: hidden;
+  }
+
+  .note:after {
+    content: 'Notes';
+    visibility: visible;
+    display: block;
+  }
+
+  /* Ensure the timetable and class name are visible and properly formatted */
+  .grid,
+  h2 {
+    display: block !important;
+  }
+}
+
+#context-menu {
+  background-color: #ffffff;       /* White background */
+  border: 1px solid #ccc;          /* Light grey border */
+  border-radius: 5px;              /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  padding: 5px 0;
+  z-index: 1000;                   /* Ensure it's on top */
+  width: 120px;                    /* Fixed width */
+}
+
+#context-menu button {
+  display: block;
+  width: 100%;                     /* Full width */
+  background: transparent;
+  border: none;
+  padding: 8px 15px;
+  text-align: left;
+  font-size: 14px;
+  color: #333;                     /* Dark grey text */
+  cursor: pointer;
+}
+
+#context-menu button:hover {
+  background-color: #f0f0f0;       /* Light grey on hover */
+}
+
+
+/* media query here uncomment */
+
+@media print {
+ 
+  td.disabled {
+    background-color: transparent !important;  
+    color: transparent !important;          
+    border-color: inherit !important;       
+    border-width: 1px !important;             
+  }
+}
+
+
+
+/* settings panel styling */
+
+#settings-panel {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#settings-panel h2 {
+    color: #333;
+}
+
+#settings-panel label {
+    display: block;
+    margin-top: 10px;
+}
+
+#settings-panel input {
+    margin-bottom: 10px;
+}
+
+#apply-settings-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#apply-settings-btn:hover {
+    background-color: #45a049;
+}
+
+/* customizer */
+
+
+/* Default theme */
+.default-theme td {
+    background-color: #f9d39f;
+    color: black;
+    border: 3px solid black;
+}
+
+/* Theme 1 */
+.theme1 td {
+    background-color: #e0f7fa;
+    color: #006064;
+    border: 3px solid #004d40;
+}
+
+/* Theme 2 */
+.theme2 td {
+    background-color: #f3e5f5;
+    color: #4a148c;
+    border: 3px solid #6a1b9a;
+}
+
+/* Theme 3 */
+.theme3 td {
+    background-color: #fff3e0;
+    color: #e65100;
+    border: 3px solid #bf360c;
+}
+
+/* Styling for the reset button */
+.small-button {
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.small-button:hover {
+    background-color: #d32f2f;
+}
