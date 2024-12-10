@@ -1,6 +1,6 @@
-Project files for TYBCA A - Timely
+# Project Files for TYBCA A - <b>Timely</b>
 
-Contributors:
-Delroy Pires
-Jesval Fernandes
+<b>Contributors:</b>  
+Delroy Pires  
+Jesval Fernandes  
 Rishabh Arolkar
