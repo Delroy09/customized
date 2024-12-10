@@ -71,7 +71,7 @@ $conn->close();
               <p class="p">Please sign in to continue</p>
             </header>
             <!-- Login form -->
-            <form id="login-form" action="login.php" method="post">
+            <form id="login-form" action="index.php" method="post">
               <div class="form-section">
                 <!-- Username input -->
                 <div class="input-standard">
