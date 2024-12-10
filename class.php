@@ -1,5 +1,3 @@
-<!-- to be modified -->
-
 <?php
 session_start();
 if (!isset($_SESSION['user'])) {
@@ -8,11 +6,14 @@ if (!isset($_SESSION['user'])) {
 }
 include 'db_config.php';
 
-$sql = "SELECT className, classDiv FROM class";
-$result = $conn->query($sql);
+$programmeID = ($_SESSION['user'] === 'bca') ? 1 : 2;
+$sql = "SELECT className, classDiv FROM class WHERE programmeID = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $programmeID);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $classDetails = [];
-
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $classDetails[] = $row;
@@ -20,6 +21,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "No classes found.";
 }
+$stmt->close();
 ?>
 
 <!DOCTYPE html>

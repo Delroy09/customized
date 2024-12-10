@@ -131,7 +131,7 @@ $classDiv = isset($_POST['classDiv']) ? $_POST['classDiv'] : 'Unknown division';
 
     <script src="scripts/script.js"></script>
     <br><br>
-    <button id="print-btn" onclick="Print()">Print</button>
+    <button id="print-btn" onclick="window.print()">Print</button>
 </div>
 </body>
 <script src="scripts/contextMenu.js"></script>

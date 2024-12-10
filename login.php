@@ -2,19 +2,7 @@
 // Start a new or resume existing session
 session_start();
 
-// Database connection configuration
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "timely_final";
-
-// Create database connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check if connection was successful
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'db_config.php';
 
 // Handle POST request for login form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
