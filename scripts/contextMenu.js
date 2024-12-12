@@ -24,6 +24,15 @@ document.querySelectorAll('td[data-cell]').forEach(cell => {
     event.preventDefault();
     selectedCell = event.target;
 
+    // Update context menu options dynamically
+    if (selectedCell.classList.contains('disabled')) {
+      document.getElementById('disable-cell').style.display = 'none';
+      document.getElementById('enable-cell').style.display = 'block';
+    } else {
+      document.getElementById('disable-cell').style.display = 'block';
+      document.getElementById('enable-cell').style.display = 'none';
+    }
+
     // Position context menu at click location
     const rect = selectedCell.getBoundingClientRect();
     contextMenu.style.top = `${rect.bottom + window.scrollY}px`;
@@ -41,16 +50,15 @@ document.addEventListener('click', (event) => {
 
 // Delete action with reset for disabled cells
 document.getElementById('delete-cell').addEventListener('click', () => {
-    if (selectedCell && selectedCell.innerHTML.trim() !== '') {
-      selectedCell.innerHTML = '';  // Clear the content
-      if (selectedCell.classList.contains('disabled')) {
-        selectedCell.style.backgroundColor = '';  // Reset the background color
-        selectedCell.classList.remove('disabled');  // Remove the 'disabled' class
-      }
+  if (selectedCell && selectedCell.innerHTML.trim() !== '') {
+    selectedCell.innerHTML = '';  // Clear the content
+    if (selectedCell.classList.contains('disabled')) {
+      selectedCell.style.backgroundColor = '';  // Reset the background color
+      selectedCell.classList.remove('disabled');  // Remove the 'disabled' class
     }
-    contextMenu.style.display = 'none';
-  });
-  
+  }
+  contextMenu.style.display = 'none';
+});
 
 // Disable action
 document.getElementById('disable-cell').addEventListener('click', () => {
@@ -70,27 +78,24 @@ document.getElementById('enable-cell').addEventListener('click', () => {
   contextMenu.style.display = 'none';
 });
 
-
-
-
 // Function to reset all disabled cells
 function resetDisabledCells() {
-    document.querySelectorAll('td[data-cell].disabled').forEach(cell => {
-      cell.style.backgroundColor = '';  // Restore original color
-      cell.classList.remove('disabled');  // Remove 'disabled' class
-    });
-  }
-  
-  // Generate Timetable button
-  document.querySelector('[data-btn]').addEventListener('click', () => {
-    resetDisabledCells();  // Restore cells before generating
-    // Your existing code for generating the timetable...
+  document.querySelectorAll('td[data-cell].disabled').forEach(cell => {
+    cell.style.backgroundColor = '';  // Restore original color
+    cell.classList.remove('disabled');  // Remove 'disabled' class
   });
-  
-  // Clear Timetable button
-  document.querySelector('[data-clear]').addEventListener('click', () => {
-    resetDisabledCells();  // Restore cells before clearing
-    document.querySelectorAll('td[data-cell]').forEach(cell => {
-      cell.innerHTML = '';  // Clear all cell contents
-    });
+}
+
+// Generate Timetable button
+document.querySelector('[data-btn]').addEventListener('click', () => {
+  resetDisabledCells();  // Restore cells before generating
+  // Your existing code for generating the timetable...
+});
+
+// Clear Timetable button
+document.querySelector('[data-clear]').addEventListener('click', () => {
+  resetDisabledCells();  // Restore cells before clearing
+  document.querySelectorAll('td[data-cell]').forEach(cell => {
+    cell.innerHTML = '';  // Clear all cell contents
   });
+});
