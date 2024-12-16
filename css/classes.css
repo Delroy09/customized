@@ -75,8 +75,6 @@
   background-color: #c82333;
 }
 
-
-
 * {
   box-sizing: border-box;
   font-family: "Arial", sans-serif;
@@ -126,7 +124,6 @@ td {
 }
 
 td {
-
   font-size: 1.2rem;
   border: 3px solid;
   min-width: 10rem;
@@ -212,7 +209,6 @@ button:focus {
 }
 
 @media print {
-
   /* Hide the buttons during print */
   .button-wrapper,
   #print-btn,
@@ -227,7 +223,7 @@ button:focus {
   }
 
   .note:after {
-    content: 'Notes';
+    content: "Notes";
     visibility: visible;
     display: block;
   }
@@ -240,123 +236,125 @@ button:focus {
 }
 
 #context-menu {
-  background-color: #ffffff;       /* White background */
-  border: 1px solid #ccc;          /* Light grey border */
-  border-radius: 5px;              /* Rounded corners */
+  background-color: #ffffff; /* White background */
+  border: 1px solid #ccc; /* Light grey border */
+  border-radius: 5px; /* Rounded corners */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
   padding: 5px 0;
-  z-index: 1000;                   /* Ensure it's on top */
-  width: 120px;                    /* Fixed width */
+  z-index: 1000; /* Ensure it's on top */
+  width: 120px; /* Fixed width */
 }
 
 #context-menu button {
   display: block;
-  width: 100%;                     /* Full width */
+  width: 100%; /* Full width */
   background: transparent;
   border: none;
   padding: 8px 15px;
   text-align: left;
   font-size: 14px;
-  color: #333;                     /* Dark grey text */
+  color: #333; /* Dark grey text */
   cursor: pointer;
 }
 
 #context-menu button:hover {
-  background-color: #f0f0f0;       /* Light grey on hover */
+  background-color: #f0f0f0; /* Light grey on hover */
 }
-
 
 /* media query here uncomment */
 
 @media print {
- 
   td.disabled {
-    background-color: transparent !important;  
-    color: transparent !important;          
-    border-color: inherit !important;       
-    border-width: 1px !important;             
+    background-color: transparent !important;
+    color: transparent !important;
+    border-color: inherit !important;
+    border-width: 1px !important;
   }
 }
 
-
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
 
 /* settings panel styling */
 
 #settings-panel {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 #settings-panel h2 {
-    color: #333;
+  color: #333;
 }
 
 #settings-panel label {
-    display: block;
-    margin-top: 10px;
+  display: block;
+  margin-top: 10px;
 }
 
 #settings-panel input {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #apply-settings-btn {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 #apply-settings-btn:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 /* customizer */
 
-
 /* Default theme */
 .default-theme td {
-    background-color: #f9d39f;
-    color: black;
-    border: 3px solid black;
+  background-color: #f9d39f;
+  color: black;
+  border: 3px solid black;
 }
 
 /* Theme 1 */
 .theme1 td {
-    background-color: #e0f7fa;
-    color: #006064;
-    border: 3px solid #004d40;
+  background-color: #e0f7fa;
+  color: #006064;
+  border: 3px solid #004d40;
 }
 
 /* Theme 2 */
 .theme2 td {
-    background-color: #f3e5f5;
-    color: #4a148c;
-    border: 3px solid #6a1b9a;
+  background-color: #f3e5f5;
+  color: #4a148c;
+  border: 3px solid #6a1b9a;
 }
 
 /* Theme 3 */
 .theme3 td {
-    background-color: #fff3e0;
-    color: #e65100;
-    border: 3px solid #bf360c;
+  background-color: #fff3e0;
+  color: #e65100;
+  border: 3px solid #bf360c;
 }
 
 /* Styling for the reset button */
 .small-button {
-    padding: 5px 10px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .small-button:hover {
-    background-color: #d32f2f;
+  background-color: #d32f2f;
 }
