@@ -263,14 +263,14 @@ button:focus {
 
 /* media query here uncomment */
 
-@media print {
+/* @media print {
   td.disabled {
     background-color: transparent !important;
     color: transparent !important;
     border-color: inherit !important;
     border-width: 1px !important;
   }
-}
+} */
 
 @media print {
   body {
