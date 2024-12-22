@@ -96,6 +96,10 @@ $conn->close();
                 </div>
               </div>
             </form>
+            <!-- Forgot Password link -->
+            <div class="divider-2">
+              <a href="pass_reset.php" class="text-wrapper-5">Forgot Password?</a>
+            </div>
             <!-- Divider for alternative sign-in options -->
             <div class="divider-2">
               <div class="text-wrapper-5">----- or continue with ------</div>

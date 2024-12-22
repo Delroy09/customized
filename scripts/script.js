@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     const clearTimetable = () => {
         cells.forEach(el => el.innerHTML = '');
+        localStorage.removeItem('timetableState'); // Clear storage when clearing table
     };
 
     const populateTimetable = async () => {
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
 
         addDragAndDropListeners();
+        saveTimetableState(); // Save after populating
     };
 
     const addDragAndDropListeners = () => {
@@ -56,6 +58,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     const temp = e.target.innerHTML;
                     e.target.innerHTML = draggedElement.innerHTML;
                     draggedElement.innerHTML = temp;
+                    saveTimetableState(); // Save after drag and drop
                 }
             });
         });
@@ -151,6 +154,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
             if (fontSize) cell.style.fontSize = `${fontSize}px`;
         });
+        
+        saveTimetableState(); // Save after applying settings
     };
 
     const resetSettings = () => {
@@ -170,4 +175,46 @@ document.addEventListener('DOMContentLoaded', (event) => {
     fontColorInput.addEventListener('input', applySettings);
     fontSizeInput.addEventListener('input', applySettings);
     resetSettingsBtn.addEventListener('click', resetSettings);
+
+    const getStorageKey = () => {
+        const className = document.querySelector('h2').textContent.trim();
+        return `timetableState_${className}`;
+    };
+
+    // Update save function
+    const saveTimetableState = () => {
+        const timetableData = {};
+        cells.forEach((cell, index) => {
+            timetableData[index] = {
+                content: cell.innerHTML,
+                isDisabled: cell.classList.contains('disabled'),
+                backgroundColor: cell.style.backgroundColor,
+                color: cell.style.color,
+                fontSize: cell.style.fontSize
+            };
+        });
+        localStorage.setItem(getStorageKey(), JSON.stringify(timetableData));
+    };
+
+    // Update load function
+    const loadTimetableState = () => {
+        const savedState = localStorage.getItem(getStorageKey());
+        if (savedState) {
+            const timetableData = JSON.parse(savedState);
+            cells.forEach((cell, index) => {
+                if (timetableData[index]) {
+                    cell.innerHTML = timetableData[index].content;
+                    if (timetableData[index].isDisabled) {
+                        cell.classList.add('disabled');
+                    }
+                    cell.style.backgroundColor = timetableData[index].backgroundColor;
+                    cell.style.color = timetableData[index].color;
+                    cell.style.fontSize = timetableData[index].fontSize;
+                }
+            });
+        }
+    };
+
+    // Load saved timetable state
+    loadTimetableState();
 });
