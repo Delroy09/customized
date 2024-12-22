@@ -36,31 +36,106 @@ document.addEventListener('DOMContentLoaded', (event) => {
             cell.setAttribute('draggable', true);
         });
 
-        addDragAndDropListeners();
+        setupDragAndDrop();
         saveTimetableState(); // Save after populating
     };
 
-    const addDragAndDropListeners = () => {
+    const handleDragStart = (e) => {
+        draggedElement = e.target;
+        e.target.classList.add('dragging');
+        e.target.style.opacity = '0.6';
+        e.dataTransfer.effectAllowed = 'move';
+    };
+
+    const handleDragEnd = (e) => {
+        e.target.classList.remove('dragging');
+        e.target.style.opacity = '1';
         cells.forEach(cell => {
-            cell.addEventListener('dragstart', (e) => {
-                draggedElement = e.target;
-                e.dataTransfer.effectAllowed = 'move';
-            });
+            cell.style.boxShadow = '';
+            cell.style.border = '';
+        });
+    };
 
-            cell.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                e.dataTransfer.dropEffect = 'move';
-            });
+    const handleDragOver = (e) => {
+        e.preventDefault();
+        const target = e.target;
+        if (target.hasAttribute('data-cell')) {
+            e.dataTransfer.dropEffect = 'move';
+            target.style.boxShadow = '0 0 10px rgba(0,0,0,0.3) inset';
+            target.style.border = '2px dashed #666';
+        }
+    };
 
-            cell.addEventListener('drop', (e) => {
-                e.preventDefault();
-                if (draggedElement && draggedElement !== e.target) {
-                    const temp = e.target.innerHTML;
-                    e.target.innerHTML = draggedElement.innerHTML;
-                    draggedElement.innerHTML = temp;
-                    saveTimetableState(); // Save after drag and drop
-                }
-            });
+    const handleDragLeave = (e) => {
+        const target = e.target;
+        if (target.hasAttribute('data-cell')) {
+            target.style.boxShadow = '';
+            target.style.border = '';
+        }
+    };
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        const target = e.target;
+        target.style.border = '';
+
+        if (draggedElement && draggedElement !== target) {
+            // Backup original states
+            const draggedState = {
+                content: draggedElement.innerHTML,
+                bgColor: draggedElement.style.backgroundColor,
+                color: draggedElement.style.color,
+                fontSize: draggedElement.style.fontSize
+            };
+
+            const targetState = {
+                content: target.innerHTML,
+                bgColor: target.style.backgroundColor,
+                color: target.style.color,
+                fontSize: target.style.fontSize
+            };
+
+            try {
+                // Perform swap
+                target.innerHTML = draggedState.content;
+                target.style.backgroundColor = draggedState.bgColor;
+                target.style.color = draggedState.color;
+                target.style.fontSize = draggedState.fontSize;
+
+                draggedElement.innerHTML = targetState.content;
+                draggedElement.style.backgroundColor = targetState.bgColor;
+                draggedElement.style.color = targetState.color;
+                draggedElement.style.fontSize = targetState.fontSize;
+
+                // Ensure draggable state
+                target.setAttribute('draggable', true);
+                draggedElement.setAttribute('draggable', true);
+
+                // Save state
+                saveTimetableState();
+            } catch (error) {
+                console.error('Error during swap:', error);
+                // Revert changes if swap fails
+                target.innerHTML = targetState.content;
+                draggedElement.innerHTML = draggedState.content;
+            }
+        }
+        draggedElement = null;
+    };
+
+    const setupDragAndDrop = () => {
+        cells.forEach(cell => {
+            cell.removeEventListener('dragstart', handleDragStart);
+            cell.removeEventListener('dragend', handleDragEnd);
+            cell.removeEventListener('dragover', handleDragOver);
+            cell.removeEventListener('dragleave', handleDragLeave);
+            cell.removeEventListener('drop', handleDrop);
+
+            cell.addEventListener('dragstart', handleDragStart);
+            cell.addEventListener('dragend', handleDragEnd);
+            cell.addEventListener('dragover', handleDragOver);
+            cell.addEventListener('dragleave', handleDragLeave);
+            cell.addEventListener('drop', handleDrop);
         });
     };
 
@@ -204,17 +279,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
             cells.forEach((cell, index) => {
                 if (timetableData[index]) {
                     cell.innerHTML = timetableData[index].content;
-                    if (timetableData[index].isDisabled) {
-                        cell.classList.add('disabled');
-                    }
                     cell.style.backgroundColor = timetableData[index].backgroundColor;
                     cell.style.color = timetableData[index].color;
                     cell.style.fontSize = timetableData[index].fontSize;
+                    if (cell.innerHTML) {
+                        cell.setAttribute('draggable', true);
+                    }
                 }
             });
+            setupDragAndDrop();
         }
     };
 
     // Load saved timetable state
     loadTimetableState();
+
+    // Initialize drag and drop on page load
+    setupDragAndDrop();
 });
