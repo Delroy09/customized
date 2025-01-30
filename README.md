@@ -1,4 +1,4 @@
-# Timely 🕒
+# Timely: Teacher's Assistant 🕒
 
 ![PHP](https://img.shields.io/badge/PHP-8.0-blue)
 ![Google Auth](https://img.shields.io/badge/Auth-Google-red)
