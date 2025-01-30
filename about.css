@@ -1,0 +1,63 @@
+
+
+/* Hero Section */
+/* .hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.hero h1 span {
+  display: block;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.hero .subtitle {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: #666;
+} */
+
+/* About Content */
+.about-content {
+  padding: 4rem 2rem;
+  background: #fff;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-card {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-card i {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.about-card h3 {
+  font-size: 1.5rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.about-card p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+

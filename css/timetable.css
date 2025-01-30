@@ -1,0 +1,347 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  border: 2.5px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+th.recess,
+td.recess {
+  background-color: #e4e4e4;
+  width: 80px;
+}
+
+/* recess text */
+th.recess {
+  font-size: 0.9em;
+  color: #000000;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.day-separator {
+  height: 20px;
+}
+
+/* Existing drag and drop styles */
+.timetable td[draggable="true"] {
+  cursor: grab;
+}
+
+.timetable td.dragging {
+  cursor: grabbing !important;
+  opacity: 0.5;
+  background: #f0f0f0;
+}
+
+.timetable td.drag-over {
+  background: #e0e0e0;
+  border: 2px dashed #666;
+}
+
+.print-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.print-buttons button {
+  margin: 0 5px; /* Changed from margin-right to symmetric margins */
+  padding: 10px 15px;
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.print-buttons button:hover {
+  background-color: #374151;
+}
+
+#back {
+  margin-right: 10px;
+  padding: 10px 15px;
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#back:hover {
+  background-color: #374151;
+}
+
+/* Teacher initial color classes */
+.teacher-initial {
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* 25 different colors for each teacher */
+.teacher-color-1 {
+  background-color: #ffb3ba;
+} /* Light Pink */
+.teacher-color-2 {
+  background-color: #baffc9;
+} /* Mint Green */
+.teacher-color-3 {
+  background-color: #bae1ff;
+} /* Light Blue */
+.teacher-color-4 {
+  background-color: #ffffb3;
+} /* Light Yellow */
+.teacher-color-5 {
+  background-color: #ffb3ff;
+} /* Light Magenta */
+.teacher-color-6 {
+  background-color: #b3ffb3;
+} /* Light Green */
+.teacher-color-7 {
+  background-color: #b3ffff;
+} /* Light Cyan */
+.teacher-color-8 {
+  background-color: #ffe4b3;
+} /* Peach */
+.teacher-color-9 {
+  background-color: #e4b3ff;
+} /* Lavender */
+.teacher-color-10 {
+  background-color: #b3ffe4;
+} /* Aquamarine */
+.teacher-color-11 {
+  background-color: #ffc9ba;
+} /* Salmon */
+.teacher-color-12 {
+  background-color: #c9ffba;
+} /* Light Lime */
+.teacher-color-13 {
+  background-color: #bac9ff;
+} /* Periwinkle */
+.teacher-color-14 {
+  background-color: #ffeba3;
+} /* Light Orange */
+.teacher-color-15 {
+  background-color: #ffb3d9;
+} /* Rose */
+.teacher-color-16 {
+  background-color: #b3ffc9;
+} /* Sea Green */
+.teacher-color-17 {
+  background-color: #b3d9ff;
+} /* Sky Blue */
+.teacher-color-18 {
+  background-color: #ffd9b3;
+} /* Light Coral */
+.teacher-color-19 {
+  background-color: #d9b3ff;
+} /* Light Purple */
+.teacher-color-20 {
+  background-color: #b3ffd9;
+} /* Mint */
+.teacher-color-21 {
+  background-color: #ffcce5;
+} /* Pink */
+.teacher-color-22 {
+  background-color: #cce5ff;
+} /* Baby Blue */
+.teacher-color-23 {
+  background-color: #ffffcc;
+} /* Cream */
+.teacher-color-24 {
+  background-color: #e5ffcc;
+} /* Light Chartreuse */
+.teacher-color-25 {
+  background-color: #ffe5cc;
+} /* Light Apricot */
+
+#goToTop {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #1f2937;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  width: 50px;
+  height: 50px;
+  transition: all 0.3s ease;
+}
+
+#goToTop:hover {
+  background-color: #374151;
+  transform: translateY(-3px);
+}
+
+.reset-layout-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 100;
+  margin-right: 80px; /* Space for go to top button */
+}
+
+.reset-layout-btn:hover {
+  background-color: #374151;
+}
+
+.semester-header {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Add after existing styles, before @media print */
+
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.context-menu button {
+    display: block;
+    width: 100%;
+    padding: 8px 15px;
+    background-color: #1f2937;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: left;
+}
+
+.context-menu button:hover {
+    background-color: #374151;
+}
+
+@media print {
+    /* Remove all existing print styles and replace with these */
+    
+    /* Basic print setup */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Hide UI elements */
+    .print-buttons, #goToTop, #back, .reset-layout-btn, .day-separator {
+        display: none !important;
+    }
+
+    /* Show semester header */
+    .semester-header {
+        display: block !important;
+        margin-bottom: 20px;
+    }
+
+    /* Table and header spacing */
+    .timetable {
+        margin: 0;
+        padding: 0;
+        page-break-inside: avoid;
+        page-break-after: always;
+    }
+
+    h2 {
+        margin: 0;
+        padding: 0;
+        page-break-after: avoid;
+    }
+
+    /* Force each day to start on new page */
+    h2:not(:first-of-type) {
+        page-break-before: always;
+    }
+
+    /* Keep header with its table */
+    h2 + .timetable {
+        page-break-before: avoid;
+        margin-top: 20px;
+    }
+
+    /* Preserve table styles */
+    .timetable td, .timetable th {
+        border: 2.5px solid #ccc !important;
+    }
+
+    .timetable td.recess, .timetable th.recess {
+        background-color: #e4e4e4 !important;
+    }
+}
+
+/* Add this wrapper around each h2 + table pair */
+.day-container {
+    page-break-before: always;
+    page-break-after: always;
+    page-break-inside: avoid;
+}
+
+/* Add new landscape print styles */
+@media print and (orientation: landscape) {
+    /* Ensure table fits on one page */
+    .timetable {
+        max-width: 100%;
+        font-size: 12px; /* Slightly reduce font size */
+        margin: 0;
+    }
+
+    /* Reduce cell padding */
+    .timetable td, 
+    .timetable th {
+        padding: 4px;
+    }
+
+    /* Adjust spacing */
+    h2 {
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    .semester-header {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    
+    /* Ensure recess columns don't take too much space */
+    th.recess,
+    td.recess {
+        width: 60px;
+    }
+}

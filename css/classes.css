@@ -1,360 +1,364 @@
-/* notes */
-
-#notes-section {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-#notes-section h2 {
-  color: #333;
-}
-
-#note-input {
-  width: 70%;
-  padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-#add-note-btn {
-  padding: 10px 20px;
-  background-color: #f1a335;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#add-note-btn:hover {
-  background-color: #e08a1f;
-}
-
-#notes-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.note-item {
-  background-color: #f1f1f1;
-  /* Light grey */
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  /* Light grey border */
-  border-radius: 5px;
-  /* Slightly rounded corners */
-  display: block;
-  width: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-}
-
-.note-item:hover {
-  background-color: #e0e0e0;
-  /* Slightly darker grey */
-}
-
-.note-item span {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.note-item button {
-  background-color: #f65954;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  padding: 5px 10px;
-}
-
-.note-item button:hover {
-  background-color: #c82333;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: "Arial", sans-serif;
-}
-
-button {
-  background-color: #da42f5;
-  border: none;
-  padding: 1rem 2rem;
-  color: white;
-  font-size: 1.2rem;
-  font-family: inherit;
-  border-radius: 0.4rem;
-  margin-right: 1rem;
-}
-
-button:hover,
-button:focus {
-  background-color: #aa0bc6;
-}
-
-button.clear-button {
-  background-color: #67f5dd;
-  color: black;
-}
-
-button.clear-button:hover,
-button.clear-button:focus {
-  background-color: #0fe7c2;
-}
-
-.button-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-table {
-  border: 3px solid black;
-  text-align: left;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 0.75rem;
-  text-align: center;
-}
-
-td {
-  font-size: 1.2rem;
-  border: 3px solid;
-  min-width: 10rem;
-  background-color: #f9d39f;
-}
-
-td[data-cell] {
-  height: 4rem;
-  position: relative;
-}
-
-thead th {
-  border-right: 3px solid;
-  text-align: center;
-}
-
-tbody th {
-  border-top: 3px solid;
-  text-align: center;
-  background-color: #ffffff;
-  font-weight: bold;
-}
-
-.wrapper {
-  max-width: 90rem;
-  padding: 1rem 2rem;
-  margin: 0 auto;
-}
-
-.lunch-row td {
-  background-color: #d69c51;
-  color: black;
-  font-weight: bold;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 1.2rem;
-  border: 3px solid black;
-}
-
-.container {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-h1 {
-  text-align: center;
-}
-
-/* Display selected class */
-h2 {
-  text-align: center;
-  color: #f58f3c;
-}
-
-.radio-buttons {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 0;
-}
-
-.radio-buttons label {
-  margin: 0.5rem 0;
-}
-
-.save-btn {
-  background-color: #4b9bff;
-  color: white;
-  font-size: 1rem;
-  border-radius: 0.3rem;
-  padding: 1rem 2rem;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-.save-btn:hover {
-  background-color: #367bb2;
-}
-
-button:focus {
-  outline: none;
-}
-
-@media print {
-  /* Hide the buttons during print */
-  .button-wrapper,
-  #print-btn,
-  #add-note-btn,
-  .note-item button,
-  #note-input {
-    display: none !important;
+/* General Styles */
+body {
+    background-color: #ffffff; /* White background */
+    color: #111; /* Dark text for readability */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
   }
-
-  .note {
-    visibility: hidden;
+  
+  a {
+    color: #1E90FF; /* Blue links */
+    text-decoration: none;
   }
-
-  .note:after {
-    content: "Notes";
-    visibility: visible;
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90px; /* Smaller sidebar */
+    height: 100%;
+    background-color: #222;
+    color: white;
+    padding-top: 40px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0 10px 10px 0; /* Rounded corners on the right side */
+    transition: width 0.3s ease;
+  }
+  
+  .sidebar h2 {
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    color: white;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 10px; /* Rounded corners on header */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+  }
+  
+  .sidebar ul li {
+    text-align: center;
+    margin: 15px 0;
+  }
+  
+  .sidebar ul li a {
     display: block;
+    padding: 12px;
+    color: white;
+    font-size: 16px;
+    background-color: #222;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
   }
-
-  /* Ensure the timetable and class name are visible and properly formatted */
-  .grid,
+  
+  .sidebar ul li a:hover {
+    background-color: #333;
+  }
+  
+  .sidebar ul li a.active {
+    background-color: #1E90FF;
+  }
+  
+  /* Header Styles (Centered Box) */
+  header {
+    background-color: #f4f4f4; /* Light gray background for header */
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+    width: 80%;
+    margin: 20px auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  header:hover {
+    transform: scale(1.05); /* Animation on hover to make header pop */
+  }
+  
+  header h1 {
+    font-size: 28px;
+    color: #333;
+    margin: 0;
+  }
+  
+  /* Main Content Styles */
+  .container {
+    margin: 20px;
+    flex: 1;
+  }
+  
   h2 {
-    display: block !important;
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: left;
+    color: #333;
   }
-}
-
-#context-menu {
-  background-color: #ffffff; /* White background */
-  border: 1px solid #ccc; /* Light grey border */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
-  padding: 5px 0;
-  z-index: 1000; /* Ensure it's on top */
-  width: 120px; /* Fixed width */
-}
-
-#context-menu button {
-  display: block;
-  width: 100%; /* Full width */
-  background: transparent;
-  border: none;
-  padding: 8px 15px;
-  text-align: left;
-  font-size: 14px;
-  color: #333; /* Dark grey text */
-  cursor: pointer;
-}
-
-#context-menu button:hover {
-  background-color: #f0f0f0; /* Light grey on hover */
-}
-
-/* media query here uncomment */
-
-/* @media print {
-  td.disabled {
-    background-color: transparent !important;
-    color: transparent !important;
-    border-color: inherit !important;
-    border-width: 1px !important;
+  
+  /* Button Styles */
+  .button-wrapper {
+    margin: 10px 0;
   }
-} */
-
-@media print {
-  body {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+  
+  button {
+    background-color: #000; /* Black background */
+    color: white;
+    border: 2px solid #1E90FF; /* Blue border */
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
-}
-
-/* settings panel styling */
-
-#settings-panel {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-#settings-panel h2 {
-  color: #333;
-}
-
-#settings-panel label {
-  display: block;
-  margin-top: 10px;
-}
-
-#settings-panel input {
-  margin-bottom: 10px;
-}
-
-#apply-settings-btn {
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#apply-settings-btn:hover {
-  background-color: #45a049;
-}
-
-/* customizer */
-
-/* Default theme */
-.default-theme td {
-  background-color: #f9d39f;
-  color: black;
-  border: 3px solid black;
-}
-
-/* Theme 1 */
-.theme1 td {
-  background-color: #e0f7fa;
-  color: #006064;
-  border: 3px solid #004d40;
-}
-
-/* Theme 2 */
-.theme2 td {
-  background-color: #f3e5f5;
-  color: #4a148c;
-  border: 3px solid #6a1b9a;
-}
-
-/* Theme 3 */
-.theme3 td {
-  background-color: #fff3e0;
-  color: #e65100;
-  border: 3px solid #bf360c;
-}
-
-/* Styling for the reset button */
-.small-button {
-  padding: 5px 10px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.small-button:hover {
-  background-color: #d32f2f;
-}
+  
+  button:hover {
+    background-color: #444; /* Darker black on hover */
+    border-color: #1C86EE; /* Lighter blue on hover */
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  button.save-btn {
+    margin-top: 20px;
+  }
+  
+  button.clear-button {
+    background-color: #ff4444; /* Red background */
+    border-color: #ff0000; /* Red border */
+  }
+  
+  button.clear-button:hover {
+    background-color: #e63e3e; /* Darker red on hover */
+    border-color: #e60000; /* Darker red border on hover */
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px; /* Rounded corners for the table */
+    overflow: hidden; /* To ensure borders round off correctly */
+  }
+  
+  table th, table td {
+    padding: 12px;
+    text-align: center;
+    border: 2px solid #ddd; /* Light border for the cells */
+    border-radius: 8px; /* Rounded corners */
+  }
+  
+  table th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  table td {
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  table td[data-cell]:empty {
+    background-color: #fff; /* Empty cells have white background */
+  }
+  
+  /* Notes Section */
+  #notes-section {
+    margin-top: 20px;
+  }
+  
+  #notes-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #notes-list li {
+    background-color: #f4f4f4;
+    margin: 5px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+  }
+  
+  #note-input {
+    width: 100%;
+    padding: 12px;
+    background-color: #f4f4f4;
+    border: 2px solid #ddd;
+    color: #333;
+    border-radius: 8px; /* Rounded input field */
+    margin-bottom: 10px;
+  }
+  
+  #add-note-btn {
+    padding: 12px 20px;
+    background-color: #1E90FF;
+    color: white;
+    border: 2px solid #1E90FF;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #add-note-btn:hover {
+    background-color: #1C86EE;
+    border-color: #1C86EE;
+  }
+  
+  /* Settings Panel */
+  #settings-panel {
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for the settings panel */
+    border: 2px solid #ddd;
+  }
+  
+  input[type="color"], input[type="number"] {
+    background-color: #f4f4f4;
+    color: #333;
+    border: 2px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  input[type="color"]:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: #1E90FF; /* Highlight border with blue when focused */
+  }
+  
+  button.small-button {
+    background-color: #444;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
+    color: white;
+    border: 2px solid #444;
+  }
+  
+  button.small-button:hover {
+    background-color: #555;
+    border-color: #555;
+  }
+  
+  .radio-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Increased space between the radio button groups */
+  }
+  
+  .radio-buttons-top,
+  .radio-buttons-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Added space between radio buttons */
+  }
+  
+  .radio-label {
+    display: flex;
+    align-items: center;
+    font-size: 24px; /* Increased font size for bigger text */
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    width: 100%; /* Full width to make the label span the container */
+    box-sizing: border-box;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .radio-label input[type="radio"] {
+    margin-right: 20px; /* Increased spacing between radio and text */
+    accent-color: #1E90FF; /* Blue accent for radio buttons */
+    transform: scale(2); /* Larger radio button */
+  }
+  
+  .radio-label:hover {
+    transform: scale(1.05);
+    color: #1E90FF; /* Highlight label text on hover */
+  }
+  
+  .radio-label input[type="radio"]:focus {
+    outline: none;
+  }
+  
+  .radio-label input[type="radio"]:checked {
+    background-color: #1E90FF; /* Blue background when selected */
+    border-color: #1E90FF;
+  }
+  
+  .radio-label input[type="radio"]:checked + span {
+    color: #1E90FF; /* Change text color to blue when selected */
+  }
+  
+  .radio-label span {
+    transition: color 0.3s ease;
+  }
+  
+  
+  /* Main Content Container */
+  .main-content {
+    margin: 20px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Increased size for the main content */
+    margin-left: 320px;
+    margin-right: 300px;
+  }
+  
+  /* Header */
+  .main-content h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  /* Save Button */
+  .save-btn {
+    background-color: #000;
+    color: white;
+    border: 2px solid #1E90FF;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto 0;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .save-btn:hover {
+    background-color: #444;
+    border-color: #1C86EE;
+  }
+  
+  .save-btn:focus {
+    outline: none;
+  }
+  

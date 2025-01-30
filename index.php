@@ -1,91 +1,98 @@
 <?php
-// Start a new or resume existing session
 session_start();
+
+if (isset($_SESSION['loggedin'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 
 include 'db_config.php';
 
-// Handle POST request for login form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get username and password from POST data
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-    // Prepare the SQL statement
-    $stmt = $conn->prepare("SELECT role FROM admin WHERE username = ? AND password = ?");
-    $stmt->bind_param("ss", $username, $password);
-
-    // Execute the statement
-    $stmt->execute();
-
-    // Bind the result to a variable
-    $stmt->bind_result($role);
-
-    // Fetch the result
-    if ($stmt->fetch()) {
-        // Check the role and set the session accordingly
-        if ($role === 'bca') {
-            $_SESSION['user'] = 'bca';
-            header("Location: class.php");
-            exit();
-        } elseif ($role === 'bvoc') {
-            $_SESSION['user'] = 'bvoc';
-            header("Location: class.php");
-            exit();
-        }
+    if (empty($username) || empty($password)) {
+        $response = ['success' => false, 'error' => 'Username and password are required.'];
     } else {
-        // Invalid credentials
-        $_SESSION['error'] = "Invalid username or password.";
+        $stmt = $conn->prepare("SELECT * FROM admin WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            if ($password === $user['password']) {
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['loggedin'] = true;
+                $_SESSION['login_success'] = true;
+                $response = ['success' => true, 'redirect' => 'dashboard.php'];
+            } else {
+                $response = ['success' => false, 'error' => 'Incorrect password'];
+            }
+        } else {
+            $response = ['success' => false, 'error' => 'User not found'];
+        }
     }
 
-    // Close the statement
-    $stmt->close();
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit();
 }
-
-// Close the database connection
-$conn->close();
+if (isset($_GET['logout']) && $_GET['logout'] == 'success') {
+  echo '<div class="logout-popup">
+          <span>You have been successfully logged out.</span>
+          <img src="image/circle-check.svg" alt="Logo">
+        </div>';
+}
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="css/login.css" />
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timely Login</title>
+  <link rel="stylesheet" href="login.css">
+  <!-- Link Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"></head>
 
 <body>
   <div class="light-login">
+    <!-- Logo section -->
     <div class="basic-header">
-      <!-- Logo section -->
       <div class="logo">
-        <img class="logomark" src="img/logo - dark.svg" alt="Timely Logo" />
+        <img class="logomark" src="image/Light.svg" alt="Timely Logo">
       </div>
     </div>
     <div class="container">
       <div class="main-content">
         <div class="onboarding-sign-up">
           <div class="div">
+            <!-- Welcome header -->
             <header class="header">
-              <!-- Welcome message -->
-              <div class="text-wrapper-2">Welcome to Timely</div>
-              <p class="p">Please sign in to continue</p>
+              <div class="welcome-title">Welcome to Timely</div>
+              <p class="welcome-subtitle">Please sign in to continue</p>
             </header>
             <!-- Login form -->
             <form id="login-form" action="index.php" method="post">
               <div class="form-section">
-                <!-- Username input -->
                 <div class="input-standard">
-                  <input class="text-wrapper-3" type="text" name="username" id="username" placeholder="Username">
+                  <input class="text-wrapper-3" type="text" name="username" id="username" placeholder="Enter your username">
                 </div>
-                <!-- Password input -->
                 <div class="input-standard">
-                  <input class="text-wrapper-3" type="password" name="password" id="password" placeholder="Password">
+                  <input class="text-wrapper-3" type="password" name="password" id="password" placeholder="Enter your password">
                 </div>
-                <!-- Sign In button -->
                 <div class="button-filled">
                   <button class="text-wrapper-4" type="submit">Sign In</button>
                 </div>
-                <!-- Error message display -->
                 <div id="error-message">
                   <?php
                   if (isset($_SESSION['error'])) {
@@ -96,32 +103,27 @@ $conn->close();
                 </div>
               </div>
             </form>
-            <!-- Forgot Password link -->
-            <div class="divider-2">
-              <a href="pass_reset.php" class="text-wrapper-5">Forgot Password?</a>
+            <div class="oauth-container">
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                <a href="google-auth.php" class="google-btn">
+                    <img src="image/google-icon.svg" alt="Google">
+                    Sign in with Google
+                </a>
             </div>
-            <!-- Divider for alternative sign-in options -->
-            <div class="divider-2">
-              <div class="text-wrapper-5">----- or continue with ------</div>
-            </div>
-            <!-- Google sign-in button -->
-            <div class="button-outlined">
-              <img class="google" src="img/search.png" alt="Google Logo" />
-              <div class="text-wrapper-6">Google</div>
-            </div>
-            <!-- Remember me checkbox -->
-            <div class="checkbox-small">
-              <input class="checkbox-small" type="checkbox" name="rememberMe" id="rememberMe">
-              <div class="text-wrapper-5">Remember me</div>
-            </div>
+           <!-- Remember me section -->
+<div class="checkbox-small">
+  <input type="checkbox" name="rememberMe" id="rememberMe">
+  <div class="remember-me-text">Remember me</div>
+  <!-- <a href="forgot-password.php" class="forgot-password-link">Forgot password?</a> Added Forgot Password link -->
+</div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Footer section -->
-    <div class="basic-footer"></div>
   </div>
-  <script src="scripts/login.js"></script>
+  <script src="JS/login.js"></script>
 </body>
 
 </html>

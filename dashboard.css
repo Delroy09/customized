@@ -1,0 +1,1237 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap");
+
+/* Add these styles to your existing CSS */
+
+th {
+  position: relative;
+  cursor: pointer;
+}
+
+th:hover {
+  background-color: #f0f0f0;
+}
+
+th:hover::after {
+  content: " ↕";
+  font-size: 0.8em;
+  color: #666;
+}
+th:not(:last-child):not(:nth-last-child(2)) {
+  position: relative;
+  cursor: pointer;
+}
+
+th:not(:last-child):not(:nth-last-child(2)):hover {
+  background-color: var(--primary-bg);
+}
+
+th:not(:last-child):not(:nth-last-child(2)):hover::after {
+  content: " ↕";
+  font-size: 0.8em;
+  color: var(--text-secondary);
+}
+:root {
+  --primary-bg: #f4f4f5;
+  --secondary-bg: #f8fafc;
+  --accent-color: #0f172a;
+  --hover-color: #1e293b;
+  --border-color: #e2e8f0;
+  --text-primary: #334155;
+  --text-secondary: #64748b;
+  --font-family: "Lexend", system-ui, sans-serif;
+  --font-primary: "Lexend", system-ui, sans-serif;
+  --font-secondary: "Inter", system-ui, sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+/* Headings - Lexend */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Body text - Inter */
+body,
+p,
+input,
+input[type="number"],
+select,
+button {
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-regular);
+}
+/* Navigation - Lexend */
+.sidebar ul li a {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Table headers - Lexend */
+th {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Table data - Inter */
+td {
+  font-family: var(--font-secondary);
+}
+
+* {
+  font-family: var(--font-family);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+  color: #000;
+  box-sizing: border-box;
+}
+
+/* Font weights for different elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+button {
+  font-weight: 500;
+}
+input,
+input[type="number"],
+select,
+textarea {
+  font-weight: 400;
+}
+table th {
+  font-weight: 500;
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+  border-radius: 0;
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
+
+.header-logo img {
+  border-radius: 0;
+}
+
+.sidebar {
+  z-index: 10;
+  width: 238px; /* Increased the width slightly for a wider sidebar */
+  height: 100vh;
+  background-color: var(--primary-bg);
+  color: #d8d4d4;
+  position: fixed;
+  padding: 0; /* Remove padding to ensure alignment */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .logo {
+  width: 100%; /* Ensure it spans the full width of the sidebar */
+  height: 120px; /* Slightly increase height of the white section */
+  background-color: white; /* White background for the logo section */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow to the bottom of the white part */
+  position: absolute; /* Position it to cover the top, left, and right */
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.nav-container {
+  margin-top: 120px; /* Push the navigation container below the white section */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 15px; /* Add padding to the nav container */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Remove default margin */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: #555;
+  text-decoration: none;
+  display: block;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.sidebar ul li a:hover {
+  background-color: rgb(196, 191, 191);
+  transform: translateX(4px);
+}
+
+.main-content {
+  margin-left: 238px;
+  padding: 40px;
+  min-height: 100vh;
+  background: var(--secondary-bg);
+}
+
+h2 {
+  margin-bottom: 40px;
+  font-size: 24px;
+  color: var(--accent-color);
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+#logout-btn {
+  background: linear-gradient(to bottom, #e0e0e0, #bababa); /* Soft gradient */
+  color: #444;
+  border: 1px solid #bbb;
+  border-radius: 14px;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 12px 26px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#logout-btn:hover {
+  background: #f5f5f5;
+  color: #222;
+  border-color: #999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+#logout-btn:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+#logout-btn img {
+  height: 22px;
+  width: 22px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+#logout-btn:hover img {
+  opacity: 1;
+}
+
+#logout-section {
+  width: 100%;
+  height: 100px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  #logout-btn {
+    padding: 10px 22px;
+  }
+
+  #logout-btn img {
+    height: 18px;
+    width: 18px;
+  }
+}
+
+.sidebar ul li a img.sidebar-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+ul {
+  margin-top: 39px;
+}
+
+#clg-logo {
+  height: 77px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#course-ic:hover img {
+  content: url("image/course.svg");
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+#course-ic.active {
+  color: #333;
+  background-color: #a5a7a9;
+}
+
+#teacher-ic:hover img {
+  content: url("image/Teachers.svg");
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+#teacher-ic.active {
+  color: #333;
+  background-color: #a5a7a9;
+}
+
+#alloc-ic:hover img {
+  content: url("image/alloc_test.svg");
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+#alloc-ic.active {
+  color: #333;
+  background-color: #a5a7a9;
+}
+
+#odd-ic:hover img {
+  content: url("image/Two.svg");
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+#odd-ic.active {
+  color: #333;
+  background-color: #a5a7a9;
+}
+
+#even-ic:hover img {
+  content: url("image/ONe.svg");
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+#even-ic.active {
+  color: #333;
+  background-color: #a5a7a9;
+}
+
+#timetable-ic:hover img {
+  content: url("image/calendar.svg");
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+#timetable-ic.active {
+  color: #333;
+  background-color: #a5a7a9;
+}
+
+/* Teacher and Course Form & Table CSS */
+/* Section Containers */
+#teacher-section,
+#course-section,
+#allocation-section {
+  margin: 0 auto; /* Center the section */
+  padding: 32px; /* Adjust padding for compactness */
+  background-color: var(--primary-bg); /* Ensure uniform background */
+  border: none; /* Add visible border */
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.input-group {
+  flex: 1;
+  min-width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-color); /* Dark grey border */
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+}
+
+label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Space between the icon and text */
+  margin-bottom: -8px; /* Adjusted to align better */
+  font-weight: 500;
+  color: #374151;
+}
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 5px 0 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: white;
+  color: #333333;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+/* General Button Styling for Add and Reset (Excluding Update/Delete) */
+button:not(.update-btn):not(.delete-btn) {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  border-radius: 8px; /* Slightly rounded corners */
+  transition: all 0.2s ease; /* Smooth transition */
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Specific Styling for Add Button */
+button#add-course,
+#add-allocation,
+#add,
+#update-allocation,
+#update-course,
+#update {
+  background-color: #18181b; /* Dark gray for Add button by default */
+  color: #fff; /* White text */
+}
+
+/* Specific Styling for Reset Button */
+button[type="reset"] {
+  background-color: #ccc; /* Light gray for Reset button by default */
+  color: #333; /* Dark gray text */
+}
+
+/* Hover Effect for Add and Reset Buttons */
+button#add-course:hover,
+#add-allocation:hover,
+#add:hover,
+#update-allocation:hover,
+#update-course:hover,
+#update:hover,
+button[type="reset"]:hover {
+  background-color: #444; /* Slightly lighter gray for Add button on hover */
+  box-shadow: 0 0 5px rgba(105, 105, 105, 0.803); /* Subtle blue glow for Add button */
+  transform: translateY(-1px);
+}
+
+/* Reset Button Hover Effect */
+button[type="reset"]:hover {
+  background-color: #bbb; /* Slightly darker gray for Reset button on hover */
+  box-shadow: 0 0 5px rgba(196, 195, 195, 0.884); /* Subtle red glow for Reset button */
+}
+
+/* Teacher and Course Form & Table CSS */
+#teacher-section,
+#course-section,
+#allocation-section {
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #f3f4f6;
+  border: none; /* Removed borders as requested */
+  box-shadow: none;
+  position: relative;
+}
+
+th,
+td {
+  padding: 16px;
+  text-align: center; /* Center content horizontally */
+  word-wrap: break-word; /* Prevent text overflow */
+  vertical-align: middle; /* Ensures content inside cells is vertically centered */
+  transition: all 0.2s ease;
+}
+
+th {
+  color: #1f2937; /* Dark grey color for the headers */
+  border-bottom: 2px solid #e5e7eb; /* Translucent line under table data */
+  background: var(--secondary-bg);
+  padding: 16px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+td {
+  text-align: center; /* Centers content horizontally in data cells */
+  border-bottom: 1px solid #e5e7eb; /* Translucent line under table data */
+  padding: 16px;
+  color: #4b5563;
+}
+
+tr:hover td {
+  background-color: #f9fafb;
+}
+
+/* Update Button */
+button.update-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(image/pencil.svg);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
+  margin: auto; /* Ensures centering within its container */
+}
+
+/* Hover Effect for Update Button */
+button.update-btn:hover {
+  background-color: rgba(204, 204, 204, 0.8); /* Light gray with 80% opacity */
+  border-radius: 8px; /* Curved edges */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Delete Button */
+button.delete-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(image/trash-2.svg);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
+  margin: auto; /* Ensures centering within its container */
+}
+
+/* Hover Effect for Delete Button */
+button.delete-btn:hover {
+  background-color: rgba(204, 204, 204, 0.8); /* Light gray with 80% opacity */
+  border-radius: 8px; /* Curved edges */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Search Container */
+.search-container {
+  margin: 32px 0;
+  margin-bottom: 10px; 
+  text-align: left; /* Aligns the content to the left */
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  display: inline-block; /* Make search container inline-block */
+}
+
+/* Search Inputs */
+#searchTeacher,
+#searchCourse,
+#searchAllocation {
+  width: 100%; /* Make input width 100% of the container */
+  padding: 12px 12px 12px 40px; /* Adjust padding to make space for the icon */
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #71718f;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+#searchTeacher:focus,
+#searchCourse:focus,
+#searchAllocation:focus {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Search Icon */
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 42%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.no-results {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #e75d5d;
+}
+
+.highlight {
+  background-color: #ffeb3b;
+  padding: 2px;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+/* Improve table styling */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  margin: 20px 0;
+  margin-top: 0;
+}
+
+/* Enhanced form styling */
+.input-group {
+  margin-bottom: 5px;
+}
+
+/* Polish button styles */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+button[type="submit"],
+#add,
+#add-course,
+#add-allocation {
+  background-color: #1f2937;
+  color: white;
+}
+
+button[type="submit"]:hover,
+#add:hover,
+#add-course:hover,
+#add-allocation:hover {
+  background-color: #374151;
+  transform: translateY(-1px);
+}
+
+button[type="reset"] {
+  background-color: #e5e7eb;
+  color: #4b5563;
+}
+
+button[type="reset"]:hover {
+  background-color: #d1d5db;
+}
+
+/* Section headers */
+h2 {
+  color: #1f2937;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 38px;
+}
+
+/* Table Container Styling */
+#teacher-data,
+#course-data,
+#allocation-data {
+  width: 100%;
+  overflow-x: auto;
+  margin: 25px 0;
+  padding: 5px;
+}
+
+/* Table Container Styling */
+#course-data {
+  width: 100%;
+  overflow-x: auto;
+  margin: 25px 0;
+  padding: 5px;
+  /* Smooth scrolling for better UX */
+  scroll-behavior: smooth;
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+/* Scrollbar styling for WebKit browsers */
+#course-data::-webkit-scrollbar {
+  height: 8px;
+}
+
+#course-data::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+#course-data::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* Base Table Styling adjustments */
+#course-table {
+  min-width: 100%;
+  width: max-content;
+  max-width: none;
+}
+
+/* Column width optimizations */
+#course-table th,
+#course-table td {
+  min-width: 120px; /* Minimum width for readability */
+  max-width: 200px; /* Maximum width to prevent too wide columns */
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Show ... for overflowing text */
+  padding: 16px 20px;
+}
+/* Specific column widths */
+#course-table th:nth-child(1), /* ID */
+#course-table td:nth-child(1) {
+  min-width: 100px;
+}
+
+#course-table th:nth-child(2), /* Name */
+#course-table td:nth-child(2) {
+  min-width: 200px;
+}
+
+#course-table th:last-child, /* Actions */
+#course-table td:last-child {
+  min-width: 120px;
+  position: sticky;
+  right: 0;
+  background: inherit;
+  /* box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); */
+}
+
+/* Hover effect to show full content */
+#course-table td:hover {
+  white-space: normal;
+  overflow: visible;
+  max-width: none;
+  position: relative;
+  background-color: #fff;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Table Styling */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Table Header */
+thead {
+  background-color: #f8f9fa;
+}
+
+th {
+  padding: 16px 20px;
+  text-align: center;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+/* Actions header alignment */
+th:last-child {
+  text-align: center;
+  min-width: 180px; /* Increased to accommodate text + icons */
+  padding: 16px;
+}
+
+/* Table Body */
+td {
+  padding: 14px 20px;
+  text-align: center;
+  vertical-align: middle;
+  color: #4b5563;
+  font-size: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+/* Action column styling with flexbox */
+th:last-child {
+  text-align: center;
+  min-width: 180px; /* Increased to accommodate text + icons */
+  padding: 16px;
+}
+
+/* Action buttons container */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+/* Action column in table body */
+td:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 16px;
+  min-width: 180px;
+}
+
+/* Action column styling */
+td:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px; /* Space between icons */
+  padding: 16px;
+  min-width: 120px; /* Ensure minimum width for action column */
+}
+
+/* Table Row Hover */
+tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Last Row Styling */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Action Buttons Column */
+td:last-child {
+  white-space: nowrap;
+  width: 120px;
+}
+
+/* Button Container in Table */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Update/Delete button containers */
+.update-btn,
+.delete-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0; /* Remove default margins */
+}
+
+/* Empty State */
+tbody:empty::after {
+  content: "No data available";
+  display: block;
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Responsive Table */
+@media screen and (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* Active states for all nav items */
+#course-ic.active,
+#teacher-ic.active,
+#alloc-ic.active,
+#odd-ic.active,
+#even-ic.active,
+#timetable-ic.active {
+  color: #000000;
+  background-color: #b8b9bb;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+#logout-btn:hover img {
+  transform: scale(1.1);
+}
+
+/* Update table header and action column alignment */
+#teacher-table th:last-child,
+#teacher-table td:last-child,
+#allocation-table th:last-child,
+#allocation-table td:last-child {
+  min-width: 120px;
+  text-align: center;
+  position: sticky;
+  right: 0;
+  background: inherit;
+  z-index: 1;
+}
+
+/* Action column styling */
+#teacher-table td:last-child,
+#allocation-table td:last-child {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+#teacher-table {
+  min-width: 100%;
+  width: max-content;
+  max-width: none;
+}
+
+/* Update/Delete button containers */
+.update-btn,
+.delete-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background-position: center;
+}
+
+/* Action headers */
+#teacher-table th:nth-last-child(1),
+#teacher-table th:nth-last-child(2),
+#allocation-table th:nth-last-child(1),
+#allocation-table th:nth-last-child(2) {
+  text-align: center;
+  min-width: 100px;
+}
+
+/* Teacher table action columns */
+#teacher-table th:nth-last-child(1),
+#teacher-table th:nth-last-child(2) {
+  text-align: center;
+  min-width: 100px;
+}
+
+#teacher-table td:nth-last-child(1),
+#teacher-table td:nth-last-child(2) {
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+  padding: 8px;
+}
+
+.update-btn,
+.delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 8px;
+  background-position: center;
+}
+
+#teacher-table thead tr th {
+  height: 50px;
+  vertical-align: middle;
+}
+
+/* Odd semester section styling */
+#odd-sem-section {
+  margin: 0 auto;
+  padding: 32px;
+  background-color: var(--primary-bg);
+  border: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
+#odd-sem-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#odd-sem-form .input-group {
+  margin-bottom: 24px;
+}
+
+#odd-sem-form select {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 5px 0 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--primary-bg);
+  color: #333333;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+#odd-sem-form select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+}
+
+#generate-timetable {
+  background-color: #18181b;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+#generate-timetable:hover {
+  background-color: #444;
+  transform: translateY(-1px);
+}
+select {
+  color: #71718f; 
+}
+select:focus {
+  color: #333; 
+}
+select option:disabled {
+  color: #71718f; 
+}
+
+#mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mobile-content {
+    padding: 2rem;
+    max-width: 90%;
+}
+
+.mobile-content img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.5rem;
+}
+
+.mobile-content h2 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.mobile-content p {
+    color: #6b7280;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* overlay on mobile devices */
+@media screen and (max-width: 1024px) {
+    #mobile-overlay {
+        display: flex;
+    }
+        body {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+        .sidebar,
+    .main-content {
+        display: none !important;
+    }
+}
+.login-popup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  color: #333;
+  padding: 15px 25px;
+  border: 2px solid #888; 
+  border-radius: 12px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  animation: fadeOut 1.5s forwards;
+}
+
+.login-popup img {
+  width: 25px; 
+  height: 25px;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* loader */
+#loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white; /* Full white background */
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.blob {
+  width: 112px;
+  height: 112px;
+  display: grid;
+  background: #fff;
+  filter: blur(5.6px) contrast(10);
+  padding: 11.2px;
+  mix-blend-mode: darken;
+}
+
+.blob:before,
+.blob:after {
+  content: "";
+  grid-area: 1/1;
+  width: 44.8px;
+  height: 44.8px;
+  background: #333;
+  animation: blob-rhf26m 2s infinite;
+}
+
+.blob:after {
+  animation-delay: -1s;
+}
+
+@keyframes blob-rhf26m {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(100%, 0);
+  }
+  50% {
+    transform: translate(100%, 100%);
+  }
+  75% {
+    transform: translate(0, 100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+
+
+
+

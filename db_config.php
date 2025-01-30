@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "timely_final";
+$dbname = "timely_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
